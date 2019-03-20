@@ -45,7 +45,17 @@ function so()
     echo 'Nr iden kernel: ' $(uname -r)
 }
 
+function proc_freq()
+{
+    cat /proc/cpuinfo | grep 'model name' | uniq
+    cat /proc/cpuinfo | grep 'cpu MHz' | uniq
+}
 
+function proc_mem()
+{
+    cat /proc/meminfo | grep 'MemTotal' | uniq
+    cat /proc/meminfo | grep 'MemFree' | uniq
+}
 
 menu
 read -p 'Optiune: ' opt
@@ -65,11 +75,24 @@ do
         ;;
         6) so
         ;;
+        7) proc_freq
+        ;;
+        8) proc_mem
+        ;;
         9) read -p 'Sec opt: ' opt2
             case $opt2 in
-                1) ls /var/log | grep '\.log'
+                1) #ls /var/log/*.log 
+                    ls /var/log/ | grep '\.log'
+                    
                 ;;
-                2) echo 2
+                2) 
+                ls /var/log/ | grep '\.log'
+                read -p "Select file: " file 
+                read -p "Search for: " text 
+                
+                cat /var/log/*$file*.log | grep $text
+                cat /var/log/$file*.gz | zgrep $text
+            
                 ;;
                 *) echo Not an option dude
                 ;;
@@ -78,6 +101,6 @@ do
         *) echo Not an option dude
         ;;
     esac
-    
+    menu
     read -p 'Optiune: ' opt
 done
