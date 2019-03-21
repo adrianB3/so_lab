@@ -82,17 +82,19 @@ do
         9) read -p 'Sec opt: ' opt2
             case $opt2 in
                 1) #ls /var/log/*.log 
-                    ls /var/log/ | grep '\.log'
-                    
+                    ls /var/log/ | grep \.log                  
                 ;;
                 2) 
-                ls /var/log/ | grep '\.log'
+                ls /var/log/ | grep \.log
                 read -p "Select file: " file 
                 read -p "Search for: " text 
                 
-                cat /var/log/*$file*.log | grep $text
-                cat /var/log/$file*.gz | zgrep $text
-            
+                files=$(ls /var/log/ | grep $file) 
+                echo $files
+                for VAR in $files
+                do
+                    zgrep $text /var/log/$VAR
+                done                
                 ;;
                 *) echo Not an option dude
                 ;;
