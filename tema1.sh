@@ -103,6 +103,8 @@ do
         *) echo Not an option dude
         ;;
     esac
+    echo
     menu
     read -p 'Optiune: ' opt
+    echo
 done
