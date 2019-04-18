@@ -1,7 +1,8 @@
-default: copy
+copy: copyfile.o
+	gcc -o copy copyfile.o
 
-copy.o: copyfile.c
-	gcc -c copyfile.c -o copy.o
+copyfile.o: copyfile.c
+	gcc -c copyfile.c
 
-copy: copy.o
-	gcc copy.o -o copy
+clean:
+	rm -f *.o
