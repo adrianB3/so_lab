@@ -6,3 +6,4 @@ copyfile.o: copyfile.c
 
 clean:
 	rm -f *.o
+	rm copy

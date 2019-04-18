@@ -62,8 +62,8 @@ void traverse_folder(char * path, char * dest, int mode){
     while((dir = readdir(d)) != NULL){
         if(dir->d_type != DT_DIR){
             printf("\t%s\n", dir->d_name);
-            char d_path[255];
-            char to_path[255];
+            char d_path[257];
+            char to_path[257];
             sprintf(d_path, "%s/%s", path, dir->d_name);
             sprintf(to_path, "%s/%s", dest, dir->d_name);
             if(mode == 0){
@@ -77,8 +77,8 @@ void traverse_folder(char * path, char * dest, int mode){
         {
             if(dir->d_type == DT_DIR && strcmp(dir->d_name, ".") != 0 && strcmp(dir->d_name, "..") != 0){
                 printf("%s\n", dir->d_name);
-                char d_path[255];
-                char to_path[255];
+                char d_path[257];
+                char to_path[257];
                 sprintf(d_path, "%s/%s", path, dir->d_name);
                 sprintf(to_path, "%s/%s", dest, dir->d_name);
                 mkdir(to_path, buf.st_mode);
