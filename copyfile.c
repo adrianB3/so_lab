@@ -75,7 +75,7 @@ void traverse_folder(char * path, char * dest, int mode){
         }
         else
         {
-            if(dir->d_type == DT_DIR && strcmp(dir->d_name, ".") != 0 && strcmp(dir->d_name, "..") != 0){
+            if(dir->d_type == DT_DIR && strcmp){
                 printf("%s\n", dir->d_name);
                 char d_path[257];
                 char to_path[257];
